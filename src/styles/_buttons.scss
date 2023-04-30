@@ -1,0 +1,7 @@
+.mat-button-base {
+  &.mat-raised-button {
+    background-color: var(--primary_color);
+    border: 2px solid var(--primary_color);
+    border-radius: 40px;
+  }
+}

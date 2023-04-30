@@ -3,8 +3,11 @@
 
 @import 'styles/bootstrap/bootstrap-grid.scss';
 @import 'styles/animations';
+@import 'styles/buttons';
 @import 'styles/input';
 @import 'styles/media';
+@import 'styles/modals';
+@import 'styles/pages';
 @import 'styles/scroll';
 @import 'styles/transitions';
 @import 'styles/typography';
@@ -39,4 +42,9 @@ body {
   height: 1em;
   overflow: visible;
   vertical-align: -0.125em;
+}
+
+.cdk-overlay-dark-backdrop {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
 }

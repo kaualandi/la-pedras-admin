@@ -8,7 +8,7 @@
       </div>
 
       <a class="logo" routerLink="/">
-        <img src="assets/images/logo.png" alt="logo">
+        <img src="assets/images/logo-white.svg" alt="logo">
       </a>
     </div>
   </nav>
@@ -22,41 +22,49 @@
             <span> Dashboard </span>
           </a>
 
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/pdv">
+            <i icon="cart"></i>
+            <span> Caixa </span>
+          </a>
+
           <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/products">
+            <i icon="box_open"></i>
             <span> Produtos </span>
           </a>
 
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/categorys">
+            <i icon="branch"></i>
+            <span> Categorias </span>
+          </a>
+
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/variations">
+            <i icon="boxes"></i>
+            <span> Variações </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/types">
+            <i icon="list_three"></i>
+            <span> Tipos </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/measures">
+            <i icon="rule"></i>
+            <span> Medidas </span>
+          </a>
+
           <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/users">
+            <i icon="users"></i>
             <span> Usuários </span>
           </a>
 
-
-          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/withdrawals">
-            <span> Saques </span>
-          </a>
-
-          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/videos">
-            <span> Vídeos </span>
-          </a>
-
-          <!-- <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/curiosities">
-            <icon [name]="'curiosity'" class="icon_color"></icon>
-            <span> Curiosidades </span>
-          </a> -->
-
-          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/brands">
-            <span> Marcas </span>
-          </a>
-
-          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/geography">
-            <span> Local </span>
-          </a>
-
           <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/config">
+            <i icon="config"></i>
             <span> Configurações </span>
           </a>
 
           <button class="item" (click)="logout()">
+            <i icon="exit"></i>
             <span> Sair </span>
           </button>
         </div>

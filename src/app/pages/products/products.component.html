@@ -1,0 +1,44 @@
+<main class="crud_page">
+  <header>
+    <h1>Produtos</h1>
+    <button mat-raised-button (click)="detailProduct(null)">Adicionar</button>
+  </header>
+
+  <page-loading *ngIf="loading"></page-loading>
+
+  <div class="table" *ngIf="!loading">
+    <table-search (search)="getProducts($event)"></table-search>
+
+    <table mat-table [dataSource]="products">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Preço </th>
+        <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let element"> {{element?.category?.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let element">
+          <button aria-label="Editar" mat-icon-button (click)="detailProduct(element)">
+            <i icon="pen"></i>
+          </button>
+          <button aria-label="Excluir" mat-icon-button (click)="deleteProduct(element)">
+            <i icon="trash"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+  </div>
+</main>

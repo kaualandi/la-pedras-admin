@@ -1,6 +1,9 @@
+import { AuthService } from './../../services/auth.service';
 import { MatDrawer } from '@angular/material/sidenav';
 import { StorageService } from './../../services/storage.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
+import { IReqError } from 'src/app/models/utils';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +11,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  constructor(private storage: StorageService) {}
+  constructor(
+    private storage: StorageService,
+    private authService: AuthService,
+    private error: ErrorSanitazerService
+  ) {}
 
   loading = false;
 
@@ -29,10 +36,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getMe() {
-    // Requisição para pegar o usuário logado
-    // if (error?.status === 401) {
-    //   this.storageService.logout();
-    // }
+    this.loading = true;
+    this.authService.me().subscribe({
+      next: (res) => {
+        this.storage.myself = res;
+        this.loading = false;
+      },
+      error: (err: IReqError) => {
+        this.error.reqErrorSanitazer(err);
+        this.loading = false;
+      },
+    });
   }
 
   async navItemClick(drawer: MatDrawer) {
@@ -42,6 +56,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    console.log('');
+    this.storage.logout();
   }
 }

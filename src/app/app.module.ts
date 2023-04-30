@@ -4,17 +4,19 @@ import localePt from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MAT_DATE_LOCALE, MatRippleModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgxMaskModule } from 'ngx-mask';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
 import { InputNumberDirective } from './directives/input-number.directive';
 
 import { AppComponent } from './app.component';
@@ -24,8 +26,11 @@ import { PageLoadingComponent } from './components/shared/page-loading/page-load
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { IconDirective } from './directives/icon.directive';
 import { InputFileDirective } from './directives/input-file.directive';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { TableSearchComponent } from './components/shared/table-search/table-search.component';
+import { DetailProductComponent } from './pages/products/detail/detail.component';
+import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 
 registerLocaleData(localePt);
 
@@ -39,8 +44,11 @@ registerLocaleData(localePt);
     PaginationComponent,
     NavbarComponent,
     InputNumberDirective,
-    HomeComponent,
     LoginComponent,
+    ProductsComponent,
+    TableSearchComponent,
+    DetailProductComponent,
+    AlertModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +62,9 @@ registerLocaleData(localePt);
     ReactiveFormsModule,
     MatCheckboxModule,
     MatSidenavModule,
+    MatTableModule,
+    MatRippleModule,
+    MatDialogModule,
     NgxMaskModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

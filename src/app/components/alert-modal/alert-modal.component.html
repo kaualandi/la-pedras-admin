@@ -1,0 +1,14 @@
+<main class="alert_modal">
+  <header>
+    <h2> {{ data.title }} </h2>
+  </header>
+
+  <div class="content">
+    <p> {{ data.message }} </p>
+  </div>
+
+  <footer>
+    <button mat-raised-button mat-dialog-close> Cancelar </button>
+    <button mat-raised-button [mat-dialog-close]="true"> Confirmar </button>
+  </footer>
+</main>

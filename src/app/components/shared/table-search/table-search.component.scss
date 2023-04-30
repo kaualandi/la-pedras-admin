@@ -1,0 +1,26 @@
+.card_input {
+  max-width: 300px;
+  position: relative;
+
+  input {
+    padding-right: calc(37px + 15px);
+    background-color: var(--primary_bg);
+  }
+
+  button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    i {
+      color: var(--text_color);
+    }
+  }
+}

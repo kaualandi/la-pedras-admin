@@ -1,5 +1,7 @@
 :host ::ng-deep .mat-drawer-content {
   height: 100vh;
+  padding-top: 60px;
+  background-color: var(--third_color);
 }
 
 #navbar {
@@ -67,7 +69,7 @@
           margin-top: auto !important;
         }
         i {
-          font-size: 1.1rem;
+          font-size: 1.05rem;
           color: var(--primary_bg);
         }
         span {
@@ -83,17 +85,17 @@
       }
     }
   }
+  .screen {
+    background-color: var(--primary_bg);
+    width: 100%;
+    padding: 40px 3%;
+    min-height: 100%;
+    border-radius: var(--br) 0 0 0;
+  }
 }
 
 .sidenav {
   width: 220px;
-}
-
-.screen {
-  width: 100%;
-  padding: 100px 3% 50px;
-  width: 100%;
-  min-height: 100vh;
 }
 
 .hamburger {

@@ -1,0 +1,7 @@
+<div class="card_input">
+  <input matInput type="text" placeholder="Pesquisar" [formControl]="inputName">
+  <button aria-label="Buscar" mat-icon-button (click)="sent()">
+    <i *ngIf="!timeout" icon="search"></i>
+    <i *ngIf="timeout" icon="loading"></i>
+  </button>
+</div>

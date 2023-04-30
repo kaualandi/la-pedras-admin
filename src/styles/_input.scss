@@ -11,9 +11,21 @@
     padding-left: 5px;
   }
 
+  & + .card_input {
+    margin-top: 10px;
+  }
+
   input,
   textarea,
   select {
+    width: 100%;
+    border: 1px solid var(--secondary_bg);
+    background-color: var(--secondary_bg);
+    padding: 10px 15px;
+    transition: var(--ts);
+    border-radius: 40px;
+    color: var(--primary_bg);
+
     &[type='number'] {
       -webkit-appearance: textfield;
       -moz-appearance: textfield;
@@ -29,6 +41,18 @@
     }
     &[type='file'] {
       display: none;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    border-radius: 40px;
+    background-color: var(--third_color);
+    transition: var(--ts);
+    color: var(--primary_bg);
+    &:disabled {
+      opacity: 0.5;
+      color: 0;
     }
   }
 }

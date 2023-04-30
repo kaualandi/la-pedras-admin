@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgxMaskModule } from 'ngx-mask';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { PaginationComponent } from './components/shared/pagination/pagination.c
 import { IconDirective } from './directives/icon.directive';
 import { InputFileDirective } from './directives/input-file.directive';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 
 registerLocaleData(localePt);
 
@@ -38,6 +40,7 @@ registerLocaleData(localePt);
     NavbarComponent,
     InputNumberDirective,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ registerLocaleData(localePt);
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatSidenavModule,
     NgxMaskModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

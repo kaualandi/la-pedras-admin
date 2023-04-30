@@ -1,0 +1,19 @@
+#login {
+  background-color: var(--third_color);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    background-color: var(--primary_bg);
+    padding: 20px 40px;
+    border-radius: var(--br);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    max-width: 400px;
+  }
+}

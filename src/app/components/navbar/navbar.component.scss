@@ -1,97 +1,133 @@
-@import 'src/styles/media';
+:host ::ng-deep .mat-drawer-content {
+  height: 100vh;
+}
 
-nav {
-  width: 100%;
-  padding: var(--navbar_top_padding);
-  .content {
-    max-width: var(--navbar_max_width);
-    margin: 0 auto;
+#navbar {
+  nav {
     width: 100%;
-    display: flex;
-    flex-wrap: inherit;
-    align-items: center;
-    justify-content: space-between;
+    padding: 5px 25px;
+    background-color: var(--third_color);
+    position: absolute;
+    z-index: 2;
 
-    @include media('<=navbar-collapse') {
-      // flex: 1;
-      flex-wrap: wrap;
-      // width: 100%;
-    }
-
-    .logo {
-      grid-area: logo;
+    .content {
       display: flex;
-      gap: 10px;
       align-items: center;
-      color: var(--navbar_top_color);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.2rem !important;
+      justify-content: flex-start;
+      gap: 20px;
+      width: 100%;
 
-      img {
-        width: var(--navbar_logo_width);
-      }
-    }
-
-    .menu {
-      transition: all 0.2s;
-      grid-area: menu;
-      overflow: hidden;
-      @include media('<=navbar-collapse') {
-        transition: var(--ts);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex-basis: 100%;
-        flex-grow: 1;
-        flex-wrap: wrap;
-        &.hidden {
-          transform: translateY(-200%);
-          z-index: -1;
+      .logo {
+        height: 50px;
+        img {
+          height: 100%;
         }
       }
-      a,
-      button {
-        color: var(--navbar_top_color);
+    }
+  }
+
+  .drawer-container {
+    background-color: var(--third_color);
+    width: 100%;
+    height: 100%;
+
+    .options {
+      height: 100%;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+
+      .item {
+        background-color: transparent;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        margin-left: 4px;
+        padding: 16px 0;
+        padding-left: 12px;
+        font-weight: 500;
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 25px;
+          width: 4px;
+          border-radius: 5px;
+          background-color: transparent;
+          opacity: 0;
+          transition: var(--ts);
+        }
+        &:last-child {
+          margin-top: auto !important;
+        }
+        i {
+          font-size: 1.1rem;
+          color: var(--primary_bg);
+        }
+        span {
+          color: var(--primary_bg);
+        }
+
+        &.select {
+          &::before {
+            background-color: var(--primary_bg);
+            opacity: 1;
+          }
+        }
       }
     }
   }
 }
 
+.sidenav {
+  width: 220px;
+}
+
+.screen {
+  width: 100%;
+  padding: 100px 3% 50px;
+  width: 100%;
+  min-height: 100vh;
+}
+
 .hamburger {
-  grid-area: hamburger;
-  display: none;
-  @include media('<=navbar-collapse') {
-    display: block;
-  }
   button {
     background-color: transparent;
     .line {
-      background-color: var(--navbar_top_color);
+      display: block;
+      height: 4px;
       width: 25px;
-      height: 3px;
       border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      margin-left: 7.2px;
+      position: relative;
       transition: var(--ts);
+      background-color: var(--primary_bg);
+
       &::before,
       &::after {
         content: '';
+        display: block;
+        height: 4px;
+        border-radius: 5px;
+        background-color: var(--primary_bg);
         position: absolute;
-        width: 25px;
-        height: 3px;
-        border-radius: 10px;
-        background-color: var(--navbar_top_color);
         transition: var(--ts);
+        width: 10px;
+        right: 0;
       }
       &::before {
-        transform: translateY(-10px);
+        top: -3px;
+        transform: rotate(45deg);
       }
+
       &::after {
-        transform: translateY(10px);
+        bottom: -3px;
+        transform: rotate(-45deg);
       }
     }
   }
@@ -100,17 +136,13 @@ nav {
     button {
       .line {
         background-color: transparent;
-        transform: rotate(180deg);
+        transition: var(--ts);
         &::before,
         &::after {
-          background-color: var(--navbar_top_color);
+          top: auto;
+          bottom: auto;
           width: 25px;
-        }
-        &::before {
-          transform: rotate(45deg);
-        }
-        &::after {
-          transform: rotate(-45deg);
+          transition: var(--ts);
         }
       }
     }

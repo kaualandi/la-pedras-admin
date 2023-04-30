@@ -1,3 +1,4 @@
+import { MatDrawer } from '@angular/material/sidenav';
 import { StorageService } from './../../services/storage.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
@@ -32,5 +33,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     // if (error?.status === 401) {
     //   this.storageService.logout();
     // }
+  }
+
+  async navItemClick(drawer: MatDrawer) {
+    if (window.innerWidth <= 768) {
+      await drawer.toggle();
+    }
+  }
+
+  logout() {
+    console.log('');
   }
 }

@@ -1,21 +1,71 @@
-<nav>
-  <div class="content">
+<div id="navbar">
+  <nav>
+    <div class="content">
+      <div class="hamburger" [ngClass]="{ active: drawer.opened }">
+        <button aria-label="menu" mat-icon-button (click)="drawer.toggle()">
+          <span class="line"></span>
+        </button>
+      </div>
 
-    <a class="logo" routerLink="/">
-      <img src="assets/images/logo.png" alt="logo">
-      Boilerplate
-    </a>
-
-    <div class="hamburger" [ngClass]="{ active: !navbarHidden }">
-      <button aria-label="menu" mat-icon-button (click)="navbarHidden = !navbarHidden">
-        <span class="line"></span>
-      </button>
+      <a class="logo" routerLink="/">
+        <img src="assets/images/logo.png" alt="logo">
+      </a>
     </div>
+  </nav>
 
-    <div class="menu" [ngClass]="{ hidden: navbarHidden }">
-      <a mat-button routerLink="/">Início</a>
-      <a mat-button routerLink="/about">Sobre</a>
-      <a mat-button routerLink="/contact">Contato</a>
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" opened class="sidenav">
+      <div class="drawer-container">
+        <div class="options">
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/dashboard">
+            <i icon="dash"></i>
+            <span> Dashboard </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/products">
+            <span> Produtos </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/users">
+            <span> Usuários </span>
+          </a>
+
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/withdrawals">
+            <span> Saques </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/videos">
+            <span> Vídeos </span>
+          </a>
+
+          <!-- <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/curiosities">
+            <icon [name]="'curiosity'" class="icon_color"></icon>
+            <span> Curiosidades </span>
+          </a> -->
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/brands">
+            <span> Marcas </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/geography">
+            <span> Local </span>
+          </a>
+
+          <a (click)="navItemClick(drawer)" class="item" routerLinkActive="select" routerLink="/config">
+            <span> Configurações </span>
+          </a>
+
+          <button class="item" (click)="logout()">
+            <span> Sair </span>
+          </button>
+        </div>
+      </div>
+
+    </mat-drawer>
+
+    <div class="screen">
+      <router-outlet></router-outlet>
     </div>
-  </div>
-</nav>
+  </mat-drawer-container>
+</div>

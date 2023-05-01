@@ -33,6 +33,14 @@ body {
   z-index: 10000000 !important;
 }
 
+.cdk-overlay-container {
+  & > div {
+    &:nth-child(4) {
+      z-index: 10000000 !important;
+    }
+  }
+}
+
 .mat-checkbox-frame {
   background-color: var(--main_color) !important;
 }

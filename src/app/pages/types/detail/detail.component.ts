@@ -1,21 +1,21 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { TypesComponent } from '../types.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IImage, IProduct } from 'src/app/models/product';
-import { IVariation } from 'src/app/models/variation';
-import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
+import { IType } from 'src/app/models/type';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
-import { VariationsComponent } from './../variations.component';
+import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
+import { IProduct } from 'src/app/models/product';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailVariationComponent implements OnInit {
+export class DetailTypeComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<VariationsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IVariation,
+    public dialogRef: MatDialogRef<TypesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IType,
     private fb: FormBuilder,
     private productsService: ProductsService,
     private error: ErrorSanitazerService
@@ -24,7 +24,6 @@ export class DetailVariationComponent implements OnInit {
   form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     price: [0, [Validators.required, Validators.min(0)]],
-    image: ['', [Validators.required]],
     product_id: [0, [Validators.required]],
   });
 
@@ -49,18 +48,12 @@ export class DetailVariationComponent implements OnInit {
   formHandleSubmit() {
     if (this.form.invalid) return;
 
-    const variation = {
+    const type = {
       ...this.data,
       ...this.form.value,
     };
 
-    this.dialogRef.close(variation);
-  }
-
-  newImage(image: string) {
-    this.form.patchValue({
-      image,
-    });
+    this.dialogRef.close(type);
   }
 
   getProducts() {

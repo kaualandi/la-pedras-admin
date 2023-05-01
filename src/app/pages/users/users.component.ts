@@ -1,21 +1,21 @@
-import { VariationsService } from './../../services/variations.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IVariation } from 'src/app/models/variation';
+import { IUser } from 'src/app/models/user';
+import { IReqError } from 'src/app/models/utils';
 import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { DetailVariationComponent } from './detail/detail.component';
-import { IReqError } from 'src/app/models/utils';
+import { UsersService } from 'src/app/services/users.service';
+import { DetailUserComponent } from './detail/detail.component';
 import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
 
 @Component({
-  selector: 'app-variations',
-  templateUrl: './variations.component.html',
-  styleUrls: ['./variations.component.scss'],
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss'],
 })
-export class VariationsComponent implements OnInit {
+export class UsersComponent implements OnInit {
   constructor(
-    private variationsService: VariationsService,
+    private usersService: UsersService,
     private dialog: MatDialog,
     private error: ErrorSanitazerService,
     private snackbar: SnackbarService
@@ -23,18 +23,18 @@ export class VariationsComponent implements OnInit {
 
   loading = false;
 
-  variations: IVariation[] = [];
-  columns = ['name', 'price', 'product', 'actions'];
+  users: IUser[] = [];
+  columns = ['name', 'email', 'is_admin', 'actions'];
 
   ngOnInit(): void {
     this.loading = true;
-    this.getVariations();
+    this.getUsers();
   }
 
-  getVariations(name = '') {
-    this.variationsService.getVariations(name).subscribe({
-      next: (variations) => {
-        this.variations = variations;
+  getUsers(name = '') {
+    this.usersService.getUsers(name).subscribe({
+      next: (users) => {
+        this.users = users;
         this.loading = false;
       },
       error: (err: IReqError) => {
@@ -44,28 +44,28 @@ export class VariationsComponent implements OnInit {
     });
   }
 
-  detailVariation(variations: IVariation | null) {
-    const dialogRef = this.dialog.open(DetailVariationComponent, {
-      data: { ...variations },
+  detailUser(users: IUser | null) {
+    const dialogRef = this.dialog.open(DetailUserComponent, {
+      data: { ...users },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) return;
 
       if (result.id) {
-        this.updateVariation(result);
+        this.updateUser(result);
         return;
       }
-      this.createVariation(result);
+      this.createUser(result);
     });
   }
 
-  updateVariation(variations: IVariation) {
+  updateUser(users: IUser) {
     this.loading = true;
-    this.variationsService.updateVariation(variations).subscribe({
+    this.usersService.updateUser(users).subscribe({
       next: () => {
-        this.getVariations();
-        this.snackbar.success('Variação editada com sucesso!');
+        this.getUsers();
+        this.snackbar.success('Usuário editado com sucesso!');
       },
       error: (err: IReqError) => {
         this.loading = false;
@@ -74,12 +74,12 @@ export class VariationsComponent implements OnInit {
     });
   }
 
-  createVariation(variation: IVariation) {
+  createUser(user: IUser) {
     this.loading = true;
-    this.variationsService.createVariation(variation).subscribe({
+    this.usersService.createUser(user).subscribe({
       next: () => {
-        this.getVariations();
-        this.snackbar.success('Variação criada com sucesso!');
+        this.getUsers();
+        this.snackbar.success('Usuário criado com sucesso!');
       },
       error: (err: IReqError) => {
         this.loading = false;
@@ -88,10 +88,10 @@ export class VariationsComponent implements OnInit {
     });
   }
 
-  deleteVariation(variation: IVariation) {
+  deleteUser(user: IUser) {
     const dialogRef = this.dialog.open(AlertModalComponent, {
       data: {
-        title: `Deletar ${variation.name}?`,
+        title: `Deletar ${user.name}?`,
         message: 'Essa ação não pode ser desfeita!',
       },
     });
@@ -100,10 +100,10 @@ export class VariationsComponent implements OnInit {
       if (!result) return;
 
       this.loading = true;
-      this.variationsService.deleteVariation(variation.id).subscribe({
+      this.usersService.deleteUser(user.id).subscribe({
         next: () => {
-          this.getVariations();
-          this.snackbar.success('Variação deletada com sucesso!');
+          this.getUsers();
+          this.snackbar.success('Usuário deletado com sucesso!');
         },
         error: (err: IReqError) => {
           this.loading = false;

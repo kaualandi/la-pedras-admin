@@ -1,0 +1,32 @@
+<main class="detail_crud">
+  <header>
+    <h2>
+      {{ data.id ? 'Editar' : 'Adicionar' }} medida
+    </h2>
+
+    <button aria-label="Fechar" mat-icon-button (click)="closeModal()">
+      <i icon="xmark"></i>
+    </button>
+  </header>
+
+  <form (ngSubmit)="formHandleSubmit()" [formGroup]="form">
+    <div class="card_input">
+      <label for="name">Nome</label>
+      <input type="text" id="name" formControlName="name" />
+    </div>
+
+    <div class="card_input">
+      <label for="abbreviation">Abreviação</label>
+      <input type="text" id="abbreviation" formControlName="abbreviation" />
+    </div>
+
+    <div class="card_buttons">
+      <button type="button" mat-raised-button (click)="closeModal()">
+        Cancelar
+      </button>
+      <button type="submit" mat-raised-button [disabled]="form.invalid">
+        {{ data.id ? 'Editar' : 'Adicionar' }}
+      </button>
+    </div>
+  </form>
+</main>

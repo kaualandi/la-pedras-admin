@@ -1,21 +1,21 @@
-import { VariationsService } from './../../services/variations.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IVariation } from 'src/app/models/variation';
-import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
-import { SnackbarService } from 'src/app/services/snackbar.service';
-import { DetailVariationComponent } from './detail/detail.component';
+import { IMeasure } from 'src/app/models/measure';
 import { IReqError } from 'src/app/models/utils';
+import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
+import { MeasuresService } from 'src/app/services/measures.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { DetailMeasureComponent } from './detail/detail.component';
 import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
 
 @Component({
-  selector: 'app-variations',
-  templateUrl: './variations.component.html',
-  styleUrls: ['./variations.component.scss'],
+  selector: 'app-measures',
+  templateUrl: './measures.component.html',
+  styleUrls: ['./measures.component.scss'],
 })
-export class VariationsComponent implements OnInit {
+export class MeasuresComponent implements OnInit {
   constructor(
-    private variationsService: VariationsService,
+    private measuresService: MeasuresService,
     private dialog: MatDialog,
     private error: ErrorSanitazerService,
     private snackbar: SnackbarService
@@ -23,18 +23,18 @@ export class VariationsComponent implements OnInit {
 
   loading = false;
 
-  variations: IVariation[] = [];
-  columns = ['name', 'price', 'product', 'actions'];
+  measures: IMeasure[] = [];
+  columns = ['name', 'abbreviation', 'actions'];
 
   ngOnInit(): void {
     this.loading = true;
-    this.getVariations();
+    this.getMeasures();
   }
 
-  getVariations(name = '') {
-    this.variationsService.getVariations(name).subscribe({
-      next: (variations) => {
-        this.variations = variations;
+  getMeasures(name = '') {
+    this.measuresService.getMeasures(name).subscribe({
+      next: (measures) => {
+        this.measures = measures;
         this.loading = false;
       },
       error: (err: IReqError) => {
@@ -44,28 +44,28 @@ export class VariationsComponent implements OnInit {
     });
   }
 
-  detailVariation(variations: IVariation | null) {
-    const dialogRef = this.dialog.open(DetailVariationComponent, {
-      data: { ...variations },
+  detailMeasure(measures: IMeasure | null) {
+    const dialogRef = this.dialog.open(DetailMeasureComponent, {
+      data: { ...measures },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) return;
 
       if (result.id) {
-        this.updateVariation(result);
+        this.updateMeasure(result);
         return;
       }
-      this.createVariation(result);
+      this.createMeasure(result);
     });
   }
 
-  updateVariation(variations: IVariation) {
+  updateMeasure(measures: IMeasure) {
     this.loading = true;
-    this.variationsService.updateVariation(variations).subscribe({
+    this.measuresService.updateMeasure(measures).subscribe({
       next: () => {
-        this.getVariations();
-        this.snackbar.success('Variação editada com sucesso!');
+        this.getMeasures();
+        this.snackbar.success('Medida editada com sucesso!');
       },
       error: (err: IReqError) => {
         this.loading = false;
@@ -74,12 +74,12 @@ export class VariationsComponent implements OnInit {
     });
   }
 
-  createVariation(variation: IVariation) {
+  createMeasure(measure: IMeasure) {
     this.loading = true;
-    this.variationsService.createVariation(variation).subscribe({
+    this.measuresService.createMeasure(measure).subscribe({
       next: () => {
-        this.getVariations();
-        this.snackbar.success('Variação criada com sucesso!');
+        this.getMeasures();
+        this.snackbar.success('Medida criada com sucesso!');
       },
       error: (err: IReqError) => {
         this.loading = false;
@@ -88,10 +88,10 @@ export class VariationsComponent implements OnInit {
     });
   }
 
-  deleteVariation(variation: IVariation) {
+  deleteMeasure(measure: IMeasure) {
     const dialogRef = this.dialog.open(AlertModalComponent, {
       data: {
-        title: `Deletar ${variation.name}?`,
+        title: `Deletar ${measure.name}?`,
         message: 'Essa ação não pode ser desfeita!',
       },
     });
@@ -100,10 +100,10 @@ export class VariationsComponent implements OnInit {
       if (!result) return;
 
       this.loading = true;
-      this.variationsService.deleteVariation(variation.id).subscribe({
+      this.measuresService.deleteMeasure(measure.id).subscribe({
         next: () => {
-          this.getVariations();
-          this.snackbar.success('Variação deletada com sucesso!');
+          this.getMeasures();
+          this.snackbar.success('Medida deletada com sucesso!');
         },
         error: (err: IReqError) => {
           this.loading = false;

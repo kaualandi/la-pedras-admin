@@ -18,7 +18,8 @@
   input,
   textarea,
   select,
-  .style {
+  .style,
+  .mat-select {
     width: 100%;
     border: 1px solid var(--secondary_bg);
     background-color: var(--secondary_bg);
@@ -50,6 +51,15 @@
       outline: none;
       border-color: var(--third_color);
     }
+  }
+
+  .mat-select-value-text {
+    span {
+      font-size: 0.8rem !important;
+    }
+  }
+  .mat-select {
+    padding: 8.5px 15px;
   }
 
   .card_images {
@@ -141,9 +151,15 @@
       color: var(--primary_bg);
       opacity: 0.5;
     }
-    &:first-child {
+    &:not(:last-child) {
       background-color: transparent;
       color: var(--text_color);
     }
   }
+}
+
+.mat-select-panel {
+  background: var(--primary_bg);
+  border-radius: var(--br);
+  box-shadow: var(--bs);
 }

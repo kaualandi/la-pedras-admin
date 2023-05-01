@@ -1,0 +1,48 @@
+<main class="detail_crud">
+  <header>
+    <h2>
+      {{ data.id ? 'Editar' : 'Adicionar' }} usuário
+    </h2>
+
+    <button aria-label="Fechar" mat-icon-button (click)="closeModal()">
+      <i icon="xmark"></i>
+    </button>
+  </header>
+
+  <form (ngSubmit)="formHandleSubmit()" [formGroup]="form">
+    <div class="card_input">
+      <label for="name">Nome</label>
+      <input type="text" id="name" formControlName="name" />
+    </div>
+
+    <div class="card_input">
+      <label for="email">E-mail</label>
+      <input type="text" id="email" formControlName="email" />
+    </div>
+
+    <div *ngIf="editPassword" class="card_input">
+      <label for="password">Senha</label>
+      <input type="password" id="password" formControlName="password" />
+    </div>
+
+    <div class="card_input">
+      <label for="role">Perfil</label>
+      <mat-select id="role" formControlName="is_admin">
+        <mat-option [value]="true">Administrador</mat-option>
+        <mat-option [value]="false">Usuário</mat-option>
+      </mat-select>
+    </div>
+
+    <div class="card_buttons">
+      <button *ngIf="data.id" type="button" mat-raised-button (click)="toggleEditPass()">
+        Editar senha
+      </button>
+      <button type="button" mat-raised-button (click)="closeModal()">
+        Cancelar
+      </button>
+      <button type="submit" mat-raised-button [disabled]="form.invalid">
+        {{ data.id ? 'Editar' : 'Adicionar' }}
+      </button>
+    </div>
+  </form>
+</main>

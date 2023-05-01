@@ -92,7 +92,8 @@ export class ProductsComponent implements OnInit {
     const dialogRef = this.dialog.open(AlertModalComponent, {
       data: {
         title: `Deletar ${product.name}?`,
-        message: 'Essa ação não pode ser desfeita!',
+        message:
+          'Isso inclui todos os tipos, variações e imagens associadas a esse produto. Essa ação não pode ser desfeita!',
       },
     });
 

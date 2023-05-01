@@ -7,6 +7,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UsersService } from 'src/app/services/users.service';
 import { DetailUserComponent } from './detail/detail.component';
 import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-users',
@@ -18,10 +19,13 @@ export class UsersComponent implements OnInit {
     private usersService: UsersService,
     private dialog: MatDialog,
     private error: ErrorSanitazerService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private storage: StorageService
   ) {}
 
   loading = false;
+
+  myself = this.storage.myself;
 
   users: IUser[] = [];
   columns = ['name', 'email', 'is_admin', 'actions'];
@@ -60,12 +64,15 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  updateUser(users: IUser) {
+  updateUser(user: IUser) {
     this.loading = true;
-    this.usersService.updateUser(users).subscribe({
+    this.usersService.updateUser(user).subscribe({
       next: () => {
         this.getUsers();
         this.snackbar.success('Usuário editado com sucesso!');
+        if (user.id === this.myself.id) {
+          this.storage.changeUser();
+        }
       },
       error: (err: IReqError) => {
         this.loading = false;
@@ -89,6 +96,11 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser(user: IUser) {
+    if (user.id === this.myself.id) {
+      this.snackbar.error('Excluir a si mesmo?! Impossível!');
+      return;
+    }
+
     const dialogRef = this.dialog.open(AlertModalComponent, {
       data: {
         title: `Deletar ${user.name}?`,

@@ -1,5 +1,5 @@
 import { ProductsService } from 'src/app/services/products.service';
-import { CategorysService } from './../../../services/categorys.service';
+import { CategoriesService } from '../../../services/categories.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductsComponent } from '../products.component';
@@ -20,7 +20,7 @@ export class DetailProductComponent implements OnInit {
     public dialogRef: MatDialogRef<ProductsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IProduct,
     private fb: FormBuilder,
-    private categorysService: CategorysService,
+    private categoriesService: CategoriesService,
     private measuresService: MeasuresService,
     private productsService: ProductsService,
     private error: ErrorSanitazerService
@@ -92,7 +92,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   getCategorys() {
-    this.categorysService.getCategorys().subscribe({
+    this.categoriesService.getCategories('').subscribe({
       next: (categorys) => {
         this.categories = categorys;
       },

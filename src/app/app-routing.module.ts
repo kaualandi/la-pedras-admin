@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { AuthGuard } from './guards/auth.guard';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 const SPR = false;
 
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductsComponent,
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
       },
     ],
   },

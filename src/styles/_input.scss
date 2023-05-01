@@ -26,6 +26,7 @@
     transition: var(--ts);
     border-radius: 40px;
     color: var(--text_color);
+    font-size: 0.8rem;
 
     &[type='number'] {
       -webkit-appearance: textfield;
@@ -120,6 +121,7 @@
     color: var(--primary_bg);
     &:disabled {
       opacity: 0.5;
+      color: var(--primary_bg);
     }
   }
 }
@@ -133,7 +135,9 @@
   button {
     border-radius: 40px;
     transition: var(--ts);
+    color: var(--primary_bg);
     &:disabled {
+      color: var(--primary_bg);
       opacity: 0.5;
     }
     &:first-child {

@@ -31,6 +31,8 @@ import { ProductsComponent } from './pages/products/products.component';
 import { TableSearchComponent } from './components/shared/table-search/table-search.component';
 import { DetailProductComponent } from './pages/products/detail/detail.component';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { DetailCategoryComponent } from './pages/categories/detail/detail.component';
 
 registerLocaleData(localePt);
 
@@ -49,6 +51,8 @@ registerLocaleData(localePt);
     TableSearchComponent,
     DetailProductComponent,
     AlertModalComponent,
+    CategoriesComponent,
+    DetailCategoryComponent,
   ],
   imports: [
     BrowserModule,

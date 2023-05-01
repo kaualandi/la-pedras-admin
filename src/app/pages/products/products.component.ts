@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
     private snackbar: SnackbarService
   ) {}
 
-  loading = true;
+  loading = false;
 
   products: IProduct[] = [];
   columns = ['name', 'price', 'category', 'actions'];

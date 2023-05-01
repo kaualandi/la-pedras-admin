@@ -10,7 +10,9 @@
     "test": "ng test",
     "tree": "tree -l 100 --ignore node_modules --ignore .angular --ignore dist -o directory-tree.txt",
     "lint": "ng lint",
-    "clear": "rm -rf node_modules && rm package-lock.json && rm -rf .angular && npm install"
+    "clear": "rm -rf node_modules && rm package-lock.json && rm -rf .angular && npm install",
+    "s3": "ng build && aws s3 cp dist/ s3://la-pedras-admin --recursive",
+    "s3:only": "aws s3 cp dist/ s3://la-pedras-admin --recursive"
   },
   "private": true,
   "dependencies": {

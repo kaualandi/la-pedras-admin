@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IImage, IProduct } from 'src/app/models/product';
+import { IProduct } from 'src/app/models/product';
 import { IVariation } from 'src/app/models/variation';
 import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
 import { ProductsService } from 'src/app/services/products.service';

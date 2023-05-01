@@ -27,6 +27,7 @@
     border-radius: 40px;
     color: var(--text_color);
     font-size: 0.8rem;
+    resize: none;
 
     &[type='number'] {
       -webkit-appearance: textfield;

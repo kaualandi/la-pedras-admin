@@ -33,6 +33,8 @@ import { DetailProductComponent } from './pages/products/detail/detail.component
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { DetailCategoryComponent } from './pages/categories/detail/detail.component';
+import { VariationsComponent } from './pages/variations/variations.component';
+import { DetailVariationComponent } from './pages/variations/detail/detail.component';
 
 registerLocaleData(localePt);
 
@@ -53,6 +55,8 @@ registerLocaleData(localePt);
     AlertModalComponent,
     CategoriesComponent,
     DetailCategoryComponent,
+    VariationsComponent,
+    DetailVariationComponent,
   ],
   imports: [
     BrowserModule,

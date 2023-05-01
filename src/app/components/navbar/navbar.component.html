@@ -73,7 +73,8 @@
     </mat-drawer>
 
     <div class="screen">
-      <router-outlet></router-outlet>
+      <router-outlet *ngIf="!loading"></router-outlet>
+      <page-loading *ngIf="loading"></page-loading>
     </div>
   </mat-drawer-container>
 </div>

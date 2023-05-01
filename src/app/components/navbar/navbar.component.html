@@ -1,15 +1,21 @@
 <div id="navbar">
   <nav>
     <div class="content">
-      <div class="hamburger" [ngClass]="{ active: drawer.opened }">
-        <button aria-label="menu" mat-icon-button (click)="drawer.toggle()">
-          <span class="line"></span>
-        </button>
+      <div class="actions">
+        <div class="hamburger" [ngClass]="{ active: drawer.opened }">
+          <button aria-label="menu" mat-icon-button (click)="drawer.toggle()">
+            <span class="line"></span>
+          </button>
+        </div>
+
+        <a class="logo" routerLink="/">
+          <img src="assets/images/logo-white.svg" alt="logo">
+        </a>
       </div>
 
-      <a class="logo" routerLink="/">
-        <img src="assets/images/logo-white.svg" alt="logo">
-      </a>
+      <div *ngIf="!loading" class="welcome">
+        <span> Olá, {{ user.name.split(' ')[0] }}! </span>
+      </div>
     </div>
   </nav>
 

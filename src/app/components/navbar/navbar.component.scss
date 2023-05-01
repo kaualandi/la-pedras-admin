@@ -15,14 +15,28 @@
     .content {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      gap: 20px;
-      width: 100%;
+      justify-content: space-between;
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        width: 100%;
 
-      .logo {
-        height: 50px;
-        img {
-          height: 100%;
+        .logo {
+          height: 50px;
+          img {
+            height: 100%;
+          }
+        }
+      }
+
+      .welcome {
+        color: var(--primary_bg);
+        flex: none;
+        span {
+          font-weight: 500;
+          font-size: 0.6rem;
         }
       }
     }

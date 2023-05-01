@@ -19,7 +19,7 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  Loading = false;
+  loading = false;
 
   loginForm = this.fb.group({
     email: ['', Validators.required],
@@ -30,19 +30,19 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       return;
     }
-    this.Loading = true;
+    this.loading = true;
 
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email || '', password || '').subscribe({
       next: (res) => {
         this.storage.setToken(res.access_token);
-        this.Loading = false;
+        this.loading = false;
         this.router.navigate(['/']);
       },
       error: (err) => {
         this.error.reqErrorSanitazer(err);
-        this.Loading = false;
+        this.loading = false;
       },
     });
   }

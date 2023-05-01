@@ -16,7 +16,10 @@
       </div>
 
       <div class="card_input">
-        <button mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button mat-button type="submit" [disabled]="!loginForm.valid">
+          Login
+          <loading *ngIf="loading"></loading>
+        </button>
       </div>
     </form>
   </div>

@@ -4,6 +4,7 @@ import { StorageService } from './../../services/storage.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ErrorSanitazerService } from 'src/app/services/error-sanitazer.service';
 import { IReqError } from 'src/app/models/utils';
+import { IUser } from 'src/app/models/user';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +21,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   loading = false;
 
   navbarHidden = true;
+
+  user: IUser = {} as IUser;
 
   ngOnInit(): void {
     this.getMe();
@@ -40,6 +43,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authService.me().subscribe({
       next: (res) => {
         this.storage.myself = res;
+        this.user = res;
         this.loading = false;
       },
       error: (err: IReqError) => {

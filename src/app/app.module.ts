@@ -42,6 +42,7 @@ import { DetailUserComponent } from './pages/users/detail/detail.component';
 import { UsersComponent } from './pages/users/users.component';
 import { DetailVariationComponent } from './pages/variations/detail/detail.component';
 import { VariationsComponent } from './pages/variations/variations.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 registerLocaleData(localePt);
 
@@ -70,6 +71,7 @@ registerLocaleData(localePt);
     DetailMeasureComponent,
     UsersComponent,
     DetailUserComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

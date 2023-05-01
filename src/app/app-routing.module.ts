@@ -9,6 +9,7 @@ import { VariationsComponent } from './pages/variations/variations.component';
 import { TypesComponent } from './pages/types/types.component';
 import { MeasuresComponent } from './pages/measures/measures.component';
 import { UsersComponent } from './pages/users/users.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const SPR = false;
 
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
       },
     ],
   },

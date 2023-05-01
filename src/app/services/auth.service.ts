@@ -33,4 +33,23 @@ export class AuthService {
 
     return this.http.get<IUser>(`${environment.base_url}/auth/me`, options);
   }
+
+  changePassword(oldPass: string, newPass: string) {
+    const body = {
+      old_password: Md5.init(oldPass),
+      new_password: Md5.init(newPass),
+    };
+
+    const options = {
+      headers: {
+        Authorization: `Bearer ${this.storage.token}`,
+      },
+    };
+
+    return this.http.post(
+      `${environment.base_url}/auth/change-password`,
+      body,
+      options
+    );
+  }
 }

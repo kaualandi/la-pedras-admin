@@ -7,8 +7,13 @@
   flex-direction: column;
 
   label {
-    font-size: 1rem;
     padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    small {
+      cursor: pointer;
+    }
   }
 
   & + .card_input {
@@ -53,13 +58,25 @@
     }
   }
 
-  .mat-select-value-text {
-    span {
-      font-size: 0.8rem !important;
+  &.alt {
+    input,
+    textarea,
+    select,
+    .style,
+    .mat-select {
+      background-color: var(--primary_bg);
+      border-color: var(--primary_bg);
     }
   }
+
   .mat-select {
     padding: 8.5px 15px;
+
+    .mat-select-value-text {
+      span {
+        font-size: 0.8rem !important;
+      }
+    }
   }
 
   .card_images {
@@ -133,27 +150,6 @@
     &:disabled {
       opacity: 0.5;
       color: var(--primary_bg);
-    }
-  }
-}
-
-.card_buttons {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 20px;
-  gap: 10px;
-  button {
-    border-radius: 40px;
-    transition: var(--ts);
-    color: var(--primary_bg);
-    &:disabled {
-      color: var(--primary_bg);
-      opacity: 0.5;
-    }
-    &:not(:last-child) {
-      background-color: transparent;
-      color: var(--text_color);
     }
   }
 }

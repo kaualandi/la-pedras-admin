@@ -1,0 +1,42 @@
+<main class="settings_page">
+  <header>
+    <h1>Configurações</h1>
+  </header>
+
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <form (ngSubmit)="handleChangePasswordSubmit()" class="card" [formGroup]="userForm">
+        <div class="card_input">
+          <label for="name">Nome</label>
+          <input type="text" id="name" formControlName="name" />
+        </div>
+        <div class="card_input">
+          <label for="email">E-mail</label>
+          <input type="text" id="email" formControlName="email" />
+        </div>
+
+        <div class="card_input alt">
+          <label for="old_password">Senha atual <small (click)="forgotPass()">Esqueceu a senha?</small></label>
+          <input type="password" id="old_password" formControlName="old_password" />
+        </div>
+
+        <div class="card_input alt">
+          <label for="password">Nova senha</label>
+          <input type="password" id="password" formControlName="password" />
+        </div>
+
+        <div class="card_input alt">
+          <label for="password_confirmation">Confirmação de senha</label>
+          <input type="password" id="password_confirmation" formControlName="password_confirmation" />
+        </div>
+
+        <div class="card_buttons">
+          <button mat-raised-button type="submit" [disabled]="userForm.invalid">
+            Alterar senha
+            <loading *ngIf="loadings.password"></loading>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

@@ -32,6 +32,10 @@
         </td>
       </ng-container>
 
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="3">Nenhuma categoria</td>
+      </tr>
+
       <tr mat-header-row *matHeaderRowDef="columns"></tr>
       <tr mat-row *matRowDef="let row; columns: columns;"></tr>
     </table>

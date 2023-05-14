@@ -65,6 +65,11 @@
       td.mat-footer-cell {
         border-bottom: 1px solid var(--table_border);
       }
+      .mat-no-data-row {
+        td {
+          text-align: center;
+        }
+      }
     }
   }
 }

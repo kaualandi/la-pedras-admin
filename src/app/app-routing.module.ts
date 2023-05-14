@@ -12,44 +12,54 @@ import { UsersComponent } from './pages/users/users.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
 const SPR = false;
+const baseTitle = ' | AL Design Admin';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    title: 'Login' + baseTitle,
   },
   {
     path: '',
     component: NavbarComponent,
     canActivate: [AuthGuard],
+    title: 'AL Design Admin',
     children: [
       {
         path: 'products',
         component: ProductsComponent,
+        title: 'Produtos' + baseTitle,
       },
       {
         path: 'categories',
         component: CategoriesComponent,
+        title: 'Categorias' + baseTitle,
       },
       {
         path: 'variations',
         component: VariationsComponent,
+        title: 'Variações' + baseTitle,
       },
       {
         path: 'types',
         component: TypesComponent,
+        title: 'Tipos' + baseTitle,
       },
       {
         path: 'measures',
         component: MeasuresComponent,
+        title: 'Medidas' + baseTitle,
       },
       {
         path: 'users',
         component: UsersComponent,
+        title: 'Usuários' + baseTitle,
       },
       {
         path: 'settings',
         component: SettingsComponent,
+        title: 'Configurações' + baseTitle,
       },
     ],
   },

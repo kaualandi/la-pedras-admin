@@ -1,0 +1,20 @@
+#products-list {
+  padding: 20px;
+  background-color: var(--secondary_bg);
+  border-radius: var(--br);
+
+  .mat-table {
+    height: 100%;
+    tr {
+      &.mat-header-row {
+        height: 32px;
+        th {
+          font-size: 0.9rem;
+        }
+      }
+      &.mat-row {
+        height: 32px;
+      }
+    }
+  }
+}

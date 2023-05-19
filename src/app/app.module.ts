@@ -43,6 +43,8 @@ import { UsersComponent } from './pages/users/users.component';
 import { DetailVariationComponent } from './pages/variations/detail/detail.component';
 import { VariationsComponent } from './pages/variations/variations.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { PdvComponent } from './pages/pdv/pdv.component';
+import { ProductListComponent } from './components/pdv/product-list/product-list.component';
 
 registerLocaleData(localePt);
 
@@ -72,6 +74,8 @@ registerLocaleData(localePt);
     UsersComponent,
     DetailUserComponent,
     SettingsComponent,
+    PdvComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

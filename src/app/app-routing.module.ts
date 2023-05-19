@@ -10,6 +10,7 @@ import { TypesComponent } from './pages/types/types.component';
 import { MeasuresComponent } from './pages/measures/measures.component';
 import { UsersComponent } from './pages/users/users.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { PdvComponent } from './pages/pdv/pdv.component';
 
 const SPR = false;
 const baseTitle = ' | AL Design Admin';
@@ -26,6 +27,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     title: 'AL Design Admin',
     children: [
+      {
+        path: 'pdv',
+        component: PdvComponent,
+        title: 'PDV' + baseTitle,
+      },
       {
         path: 'products',
         component: ProductsComponent,

@@ -1,0 +1,41 @@
+<main id="pdv">
+  <div class="content">
+
+    <div class="row">
+      <div class="col-9">
+        <div class="products">
+          <div class="register-data">
+            <form>
+              <div class="row">
+                <div class="col-3">
+                  <div class="card_input">
+                    <label for="qtd">Quantidade</label>
+                    <input type="text" id="qtd" name="qtd" placeholder="Quantidade" mask="separator"
+                      thousandSeparator=".">
+                  </div>
+                </div>
+                <div class="col-9">
+                  <div class="card_input">
+                    <label for="code">Código</label>
+                    <input type="text" id="code" name="code" placeholder="Código de barras">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="product-list">
+            <app-product-list></app-product-list>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="actions">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

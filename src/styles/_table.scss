@@ -1,0 +1,55 @@
+table {
+  width: 100%;
+
+  thead {
+    th.mat-header-cell {
+      font-weight: 500;
+      color: var(--title_color);
+      font-size: 1rem;
+    }
+  }
+
+  tbody {
+    tr.mat-row {
+      transition: var(--ts);
+      &:nth-child(odd) {
+        background-color: var(--table_odd);
+      }
+      &:hover {
+        background-color: var(--table_hover);
+      }
+      td.mat-cell {
+        font-size: 0.8rem;
+        color: var(--text_color);
+        &.mat-column-actions {
+          button {
+            background-color: transparent;
+            border: none;
+            i {
+              font-size: 0.9rem;
+              cursor: pointer;
+              transition: var(--ts);
+              &[icon='pen'] {
+                color: var(--green_color);
+              }
+              &[icon='trash'] {
+                color: var(--red_color);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  th.mat-header-cell,
+  td.mat-cell,
+  td.mat-footer-cell {
+    border-bottom: 1px solid var(--table_border);
+  }
+  .mat-no-data-row {
+    td {
+      text-align: center;
+    }
+  }
+}

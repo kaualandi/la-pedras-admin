@@ -22,6 +22,9 @@
   font-size: 1.5rem !important;
 }
 
+small {
+  @extend .f-10;
+}
 h1 {
   @extend .f-24;
 }

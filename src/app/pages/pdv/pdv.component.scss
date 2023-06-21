@@ -5,5 +5,17 @@
         margin-bottom: 1rem;
       }
     }
+    .actions {
+      .row {
+        --bs-gutter-y: 1.5rem;
+        button {
+          width: 100%;
+          text-wrap: wrap;
+          small {
+            display: block;
+          }
+        }
+      }
+    }
   }
 }

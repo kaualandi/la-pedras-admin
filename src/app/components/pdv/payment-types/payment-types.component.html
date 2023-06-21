@@ -1,0 +1,13 @@
+<h1 matDialogTitle>Selecionar forma de pagamento</h1>
+
+<form [formGroup]="payment" mat-dialog-content (ngSubmit)="handleSubmitForm()">
+  <mat-radio-group formControlName="type">
+    <mat-radio-button *ngFor="let type of payment_types" [value]="type.value">
+      {{type.label}}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <button type="submit" mat-raised-button>
+    Confirmar
+  </button>
+</form>

@@ -19,6 +19,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { InputNumberDirective } from './directives/input-number.directive';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
@@ -45,6 +46,7 @@ import { VariationsComponent } from './pages/variations/variations.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { PdvComponent } from './pages/pdv/pdv.component';
 import { ProductListComponent } from './components/pdv/product-list/product-list.component';
+import { PaymentTypesComponent } from './components/pdv/payment-types/payment-types.component';
 
 registerLocaleData(localePt);
 
@@ -76,6 +78,7 @@ registerLocaleData(localePt);
     SettingsComponent,
     PdvComponent,
     ProductListComponent,
+    PaymentTypesComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,7 @@ registerLocaleData(localePt);
     MatRippleModule,
     MatDialogModule,
     MatSelectModule,
+    MatRadioModule,
     NgxMaskModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
